@@ -1,0 +1,32 @@
+generated: '2026-07-18'
+method: searched
+source: https://docs.djamo.com/authentication.html
+summary:
+  types: [http]
+  http_scheme: bearer
+  token_prefix: at_
+  additional_headers: [X-company-Id]
+  oauth2_flows: []
+  notes: >-
+    Djamo Business API uses a long-lived bearer ACCESS_TOKEN (prefix `at_`) issued
+    to selected partners during onboarding. There is no self-service OAuth flow and
+    no scope surface; access is scoped by the token and business account. Some
+    endpoints additionally require an `X-company-Id` header. All requests must be
+    over HTTPS; plain HTTP is rejected. Token rotation is handled by contacting the
+    Djamo Business account manager. A separate `SECRET_KEY` (issued alongside the
+    access token) is used only to verify webhook HMAC signatures.
+schemes:
+  - name: bearerAuth
+    type: http
+    scheme: bearer
+    bearer_prefix: at_
+    location: header
+    header: Authorization
+    format: 'Authorization: Bearer <ACCESS_TOKEN>'
+    docs: https://docs.djamo.com/authentication.html
+  - name: companyIdHeader
+    type: apiKey
+    in: header
+    header: X-company-Id
+    description: Company identifier required on certain endpoints.
+    docs: https://docs.djamo.com/authentication.html
