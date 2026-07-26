@@ -1,0 +1,33 @@
+# Djamo
+
+> Djamo is a mobile-first fintech serving Côte d'Ivoire and Sénégal, offering current and savings accounts, Visa cards, transfers, bill pay, credit and investments to 1.5M+ users. Its Business API lets companies collect payments ("Pay with Djamo"), send single and mass transfers, check balances, and manage marketplace sub-companies.
+
+## APIs
+- [Djamo Business API docs](https://docs.djamo.com/): REST API for collections, transfers, balance, sub-companies, and webhooks.
+- [API overview & pricing](https://www.djamo.com/fr-ci/api): product page for the Business API.
+
+## Specs & Artifacts
+- [Authentication](https://raw.githubusercontent.com/api-evangelist/djamo/refs/heads/main/authentication/djamo-authentication.yml): bearer ACCESS_TOKEN (prefix at_), HTTPS only.
+- [Conventions](https://raw.githubusercontent.com/api-evangelist/djamo/refs/heads/main/conventions/djamo-conventions.yml): idempotency via externalId/reference, XOF integer amounts, E.164, ISO 8601, correlationId, 429 rate limits.
+- [Error catalog](https://raw.githubusercontent.com/api-evangelist/djamo/refs/heads/main/errors/djamo-problem-types.yml): custom error envelope, HTTP 400–500.
+- [Webhooks (AsyncAPI)](https://raw.githubusercontent.com/api-evangelist/djamo/refs/heads/main/asyncapi/djamo-webhooks-asyncapi.yml): transactions/started|completed|failed, charge/events, HMAC-SHA256 signed.
+- [Data model](https://raw.githubusercontent.com/api-evangelist/djamo/refs/heads/main/data-model/djamo-data-model.yml): Charge, Transaction, Batch, SubCompany, Balance.
+- [Sandbox](https://raw.githubusercontent.com/api-evangelist/djamo/refs/heads/main/sandbox/djamo-sandbox.yml): staging vs production base URLs, staging /pay simulator.
+
+## Docs
+- [Getting started / basics](https://docs.djamo.com/basics.html)
+- [Authentication](https://docs.djamo.com/authentication.html)
+- [Handling errors](https://docs.djamo.com/errors.html)
+- [Collection API](https://docs.djamo.com/api/collection.html)
+- [Transfer API](https://docs.djamo.com/api/transfer.html)
+- [Sub-companies API](https://docs.djamo.com/api/sub-companies.html)
+- [Webhooks](https://docs.djamo.com/api/webhooks.html)
+- [Onboarding guide](https://docs.djamo.com/onboarding-guide.html)
+- [Playground](https://docs.djamo.com/playground.html)
+
+## Company
+- [Website](https://www.djamo.com/)
+- [Pricing (business)](https://www.djamo.com/fr-ci/tarifs-business)
+- [Terms](https://www.djamo.com/fr-ci/conditions-generales-et-tarifaires)
+- [Privacy](https://www.djamo.com/fr-ci/politique-de-confidentialite)
+- [Careers](https://careers.djamo.com)

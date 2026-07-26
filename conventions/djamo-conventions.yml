@@ -1,0 +1,54 @@
+generated: '2026-07-18'
+method: searched
+source: https://docs.djamo.com/basics.html
+api: Djamo Business API
+authentication:
+  style: bearer-token
+  header: 'Authorization: Bearer <ACCESS_TOKEN>'
+  ref: authentication/djamo-authentication.yml
+idempotency:
+  supported: true
+  mechanism: caller-supplied-reference
+  fields:
+    - name: externalId
+      scope: charges (POST /v1/charges)
+      description: Merchant's own transaction reference; reusing it to create two different charges returns HTTP 409.
+    - name: reference
+      scope: transactions (POST /v1/transactions)
+      description: Caller-supplied internal identifier used for idempotency and reconciliation; also queryable via GET /v1/transactions?reference={value}.
+  collision_status: 409
+  notes: >-
+    Djamo does not use a dedicated Idempotency-Key header; instead each write carries
+    a caller-owned reference (externalId for charges, reference for transactions).
+    A repeated reference for a distinct request yields a 409 collision, giving
+    at-most-once semantics per reference.
+versioning:
+  scheme: uri-path
+  current: v1
+  example: /v1/charges
+pagination:
+  documented: false
+data_formats:
+  amounts: positive integer, minor-unit-free (XOF has no decimals), e.g. 10000
+  currency: XOF (ISO 4217)
+  phone_numbers: E.164 (msisdn)
+  timestamps: ISO 8601 UTC (e.g. 2025-10-30T08:35:51.624Z)
+request_tracing:
+  field: correlationId
+  location: error response body (and returned for support correlation)
+error_envelope:
+  format: custom
+  ref: errors/djamo-problem-types.yml
+  fields: [statusCode, message, error, correlationId, path, timestamp]
+rate_limiting:
+  signaled: true
+  status: 429
+  guidance: Implement exponential backoff on 429.
+  headers_documented: false
+environments:
+  ref: sandbox/djamo-sandbox.yml
+  note: The ACCESS_TOKEN and BASE_URL together determine staging vs production.
+webhooks:
+  ref: asyncapi/djamo-webhooks-asyncapi.yml
+  signature_header: x-djamo-hmac-sha256
+  algorithm: HMAC-SHA256 (base64)

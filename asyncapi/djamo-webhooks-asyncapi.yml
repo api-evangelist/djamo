@@ -1,0 +1,106 @@
+generated: '2026-07-18'
+method: generated
+source: https://docs.djamo.com/api/webhooks.html
+spec_type: AsyncAPI
+note: >-
+  Djamo publishes no AsyncAPI document; this 3.0.0 spec is generated faithfully
+  from the four documented webhook event types and the documented HMAC-SHA256
+  signature scheme. Payload fields mirror the documented `data` object.
+asyncapi: 3.0.0
+info:
+  title: Djamo Business API Webhooks
+  version: v1
+  description: >-
+    Server-to-server webhook events emitted by the Djamo Business API for
+    transaction lifecycle and charge status changes. Each delivery is signed with
+    an HMAC-SHA256 signature (base64) in the `x-djamo-hmac-sha256` header, computed
+    over the raw request body using the partner SECRET_KEY.
+  externalDocs:
+    url: https://docs.djamo.com/api/webhooks.html
+defaultContentType: application/json
+components:
+  securitySchemes:
+    hmac:
+      type: httpApiKey
+      name: x-djamo-hmac-sha256
+      in: header
+      description: Base64 HMAC-SHA256 of the raw payload keyed with the partner SECRET_KEY.
+  messages:
+    transactionStarted:
+      name: transactions/started
+      title: Transaction started
+      summary: A transaction request has been received and queued.
+      payload:
+        type: object
+        properties:
+          topic: { type: string, const: transactions/started }
+          data: { type: object }
+    transactionCompleted:
+      name: transactions/completed
+      title: Transaction completed
+      summary: The transaction has been successfully executed.
+      payload:
+        type: object
+        properties:
+          topic: { type: string, const: transactions/completed }
+          data: { type: object }
+    transactionFailed:
+      name: transactions/failed
+      title: Transaction failed
+      summary: The transaction failed to execute.
+      payload:
+        type: object
+        properties:
+          topic: { type: string, const: transactions/failed }
+          data: { type: object }
+    chargeEvents:
+      name: charge/events
+      title: Charge status updated
+      summary: The status of a charge was updated.
+      payload:
+        type: object
+        properties:
+          topic: { type: string, const: charge/events }
+          data: { type: object }
+channels:
+  transactionsStarted:
+    address: transactions/started
+    messages:
+      transactionStarted:
+        $ref: '#/components/messages/transactionStarted'
+  transactionsCompleted:
+    address: transactions/completed
+    messages:
+      transactionCompleted:
+        $ref: '#/components/messages/transactionCompleted'
+  transactionsFailed:
+    address: transactions/failed
+    messages:
+      transactionFailed:
+        $ref: '#/components/messages/transactionFailed'
+  chargeEvents:
+    address: charge/events
+    messages:
+      chargeEvents:
+        $ref: '#/components/messages/chargeEvents'
+operations:
+  receiveTransactionStarted:
+    action: receive
+    channel: { $ref: '#/channels/transactionsStarted' }
+    security:
+      - $ref: '#/components/securitySchemes/hmac'
+  receiveTransactionCompleted:
+    action: receive
+    channel: { $ref: '#/channels/transactionsCompleted' }
+    security:
+      - $ref: '#/components/securitySchemes/hmac'
+  receiveTransactionFailed:
+    action: receive
+    channel: { $ref: '#/channels/transactionsFailed' }
+    security:
+      - $ref: '#/components/securitySchemes/hmac'
+  receiveChargeEvents:
+    action: receive
+    channel: { $ref: '#/channels/chargeEvents' }
+    security:
+      - $ref: '#/components/securitySchemes/hmac'

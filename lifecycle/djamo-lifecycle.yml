@@ -1,0 +1,18 @@
+generated: '2026-07-18'
+method: searched
+source: https://docs.djamo.com/basics.html
+versioning:
+  scheme: uri-path
+  current: v1
+  docs: https://docs.djamo.com/basics.html
+deprecation:
+  policy_url: null
+  sunset_header: false
+  note: No public deprecation policy or Sunset/Deprecation header support documented.
+sla:
+  url: null
+status_page: null
+changelog:
+  url: null
+  note: No public dated changelog found (checked docs.djamo.com sitemap).
+deprecated_operations: []

@@ -1,0 +1,32 @@
+generated: '2026-07-18'
+method: derived
+source: https://docs.djamo.com/
+standards:
+  - id: oauth2
+    conforms: false
+    evidence: Auth is a static long-lived bearer ACCESS_TOKEN issued to partners; no OAuth flows or scopes.
+  - id: oidc
+    conforms: false
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: Errors use a custom JSON envelope (statusCode/message/error/correlationId/path/timestamp), not application/problem+json.
+  - id: rfc8594-sunset-header
+    conforms: false
+  - id: webhook-hmac-signing
+    conforms: true
+    evidence: Webhook deliveries signed with HMAC-SHA256 (base64) in x-djamo-hmac-sha256.
+  - id: idempotency
+    conforms: true
+    evidence: Caller-supplied externalId/reference gives at-most-once semantics; duplicate reference returns 409.
+  - id: e164-phone-numbers
+    conforms: true
+    evidence: Recipient msisdn documented in E.164.
+  - id: iso8601-timestamps
+    conforms: true
+    evidence: Timestamps documented as ISO 8601 UTC.
+  - id: iso4217-currency
+    conforms: true
+    evidence: Amounts in XOF as integers.
+  - id: rate-limit-signaling
+    conforms: true
+    evidence: HTTP 429 documented for rate limiting.

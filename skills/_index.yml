@@ -1,0 +1,15 @@
+generated: '2026-07-18'
+method: generated
+source: https://docs.djamo.com/
+note: >-
+  Djamo publishes no OpenAPI spec; skills are grounded in the documented Business
+  API HTTP operations (method + path), not fabricated operationIds.
+skills:
+  - file: djamo-collect-payment.md
+    name: Collect a payment with Djamo
+    api: Djamo Business API
+    operations: [POST /v1/charges, GET /v1/charges/:id, POST /v1/charges/:id/refund]
+  - file: djamo-send-transfer.md
+    name: Send money with Djamo
+    api: Djamo Business API
+    operations: [GET /v1/transactions/customers/check, POST /v1/transactions, POST /v1/transactions/batch, GET /v1/balance]

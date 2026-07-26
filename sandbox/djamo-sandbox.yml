@@ -1,0 +1,39 @@
+generated: '2026-07-18'
+method: searched
+source: https://docs.djamo.com/basics.html
+name: Djamo Business API staging
+model: environment-separated
+separation:
+  determined_by: The ACCESS_TOKEN and BASE_URL together determine whether a request is staging or production.
+  key_prefix: at_ (same prefix for staging and production; environment is bound to the issued token)
+environments:
+  - env: staging
+    country: CIV
+    base_url: https://apibusiness-staging-civ.djamo.io
+  - env: production
+    country: CIV
+    base_url: https://api-civ.djamo.com
+  - env: staging
+    country: SEN
+    base_url: https://apibusiness-staging-sen.djamo.io
+  - env: production
+    country: SEN
+    base_url: https://api-sen.djamo.com
+staging_only_tooling:
+  - operation: POST /v1/charges/:id/pay
+    description: >-
+      Staging-only endpoint that simulates a customer paying a charge, so an
+      integration can advance a charge to `paid` without the real Djamo app.
+test_values:
+  published: false
+  note: >-
+    Djamo does not publish fixed magic test phone numbers, test cards, or fixture
+    identifiers in its public docs; staging credentials and any test values are
+    provided per partner during onboarding. No test values are invented here.
+onboarding:
+  contact: business@djamo.com
+  steps:
+    - Contact the Djamo Business team with company details and use case.
+    - Submit company registration, tax registration (DFE or equivalent), and proof of address (within 6 months).
+    - Receive staging credentials, integrate and test.
+    - Submit for validation to receive production credentials.

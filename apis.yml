@@ -1,8 +1,27 @@
 aid: djamo
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/djamo.png
 name: Djamo
-description: 'Djamo is a company surfaced as a portfolio company of partech and added to the API Evangelist
-  network as a stub for enrichment. Sector: Financial Services. This profile is a lead awaiting the enrichment
-  pipeline.'
+description: >-
+  Djamo is a mobile-first fintech serving Côte d'Ivoire and Sénégal, giving 1.5M+
+  users current and savings accounts with an IBAN, virtual and physical Visa cards,
+  money transfers to Mobile Money and bank accounts, bill payments, short-term
+  credit, and BRVM investment products. For businesses, Djamo exposes a REST
+  Business API that lets companies collect payments ("Pay with Djamo"), send single
+  and mass transfers to recipients by phone number, check their real-time balance,
+  and manage marketplace sub-companies, secured with bearer tokens and HMAC-signed
+  webhooks. Djamo is a Y Combinator alumnus backed by investors including Partech.
 url: https://raw.githubusercontent.com/api-evangelist/djamo/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -12,16 +31,87 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-18'
 tags:
 - Company
 - Financial Services
-apis: []
+- Fintech
+- Payments
+- Banking
+- Money Transfer
+- Africa
+- Côte d'Ivoire
+- Sénégal
+apis:
+- name: Djamo Business API
+  description: >-
+    REST API for businesses to collect payments, send single and mass transfers,
+    check balance, manage sub-companies, and receive HMAC-signed webhooks.
+  humanURL: https://docs.djamo.com/
+  baseURL: https://api-civ.djamo.com
+  tags:
+  - Payments
+  - Transfers
+  - Fintech
+  properties:
+  - type: Documentation
+    url: https://docs.djamo.com/
+  - type: APIReference
+    url: https://docs.djamo.com/api/overview.html
+  - type: GettingStarted
+    url: https://docs.djamo.com/basics.html
+  - type: Authentication
+    url: authentication/djamo-authentication.yml
+  - type: Conventions
+    url: conventions/djamo-conventions.yml
+  - type: Idempotency
+    url: conventions/djamo-conventions.yml
+  - type: ErrorCatalog
+    url: errors/djamo-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/djamo-lifecycle.yml
+  - type: Conformance
+    url: conformance/djamo-conformance.yml
+  - type: Sandbox
+    url: sandbox/djamo-sandbox.yml
+  - type: DataModel
+    url: data-model/djamo-data-model.yml
+  - type: MCPServer
+    url: mcp/djamo-mcp.yml
+  - type: LLMsTxt
+    url: llms/djamo-llms.txt
+  - type: AsyncAPI
+    url: asyncapi/djamo-webhooks-asyncapi.yml
+  - type: Webhooks
+    url: asyncapi/djamo-webhooks-asyncapi.yml
+  - type: AgentSkill
+    url: skills/_index.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/djamo-domain-security.yml
 - type: Website
   url: https://www.djamo.com/
+- type: DeveloperPortal
+  url: https://docs.djamo.com/
+- type: Pricing
+  url: https://www.djamo.com/fr-ci/tarifs-business
+- type: SignUp
+  url: https://go.djamo.com/app
+- type: TermsOfService
+  url: https://www.djamo.com/fr-ci/conditions-generales-et-tarifaires
+- type: PrivacyPolicy
+  url: https://www.djamo.com/fr-ci/politique-de-confidentialite
+- type: Blog
+  url: https://www.djamo.com/fr-ci/apprendre
+- type: Support
+  url: https://docs.djamo.com/contact.html
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

@@ -1,0 +1,50 @@
+generated: '2026-07-18'
+method: searched
+source: https://docs.djamo.com/api/collection.html, https://docs.djamo.com/api/transfer.html, https://docs.djamo.com/api/sub-companies.html
+entities:
+  - name: Charge
+    description: A payment collection request presented to a customer to pay with Djamo.
+    fields: [id, createdAt, externalId, status, amount, currency, due, paid, refunded, fees, paymentUrl, transactions, metadata]
+    statuses: [created, due, paid, refunded, refunded_partially, dropped]
+    identifier: id
+  - name: Transaction
+    description: A money movement (transfer) to a recipient, or a payment record under a charge.
+    fields: [id, amount, fee, totalAmount, msisdn, status, reference, djamoTransactionReference, type, createdAt, updatedAt, failureReason, batchId]
+    statuses: [pending, completed, failed]
+    identifier: id
+  - name: Batch
+    description: A mass-transfer batch grouping multiple transactions.
+    fields: [id, status, totalAmount, totalFee, transactions]
+    statuses: [processing]
+    identifier: id
+  - name: SubCompany
+    description: A marketplace sub-entity with its own branding, transacting under the parent business.
+    fields: [id, createdAt, updatedAt, name, logoUrl, isActive]
+    id_prefix: subco_
+    identifier: id
+  - name: Balance
+    description: Real-time available business balance.
+    fields: [balance, currency]
+relationships:
+  - from: Charge
+    to: Transaction
+    kind: has_many
+    via: transactions
+  - from: Transaction
+    to: Charge
+    kind: belongs_to
+    via: charge
+  - from: Batch
+    to: Transaction
+    kind: has_many
+    via: transactions
+  - from: Transaction
+    to: Batch
+    kind: belongs_to
+    via: batchId
+  - from: Transaction
+    to: SubCompany
+    kind: belongs_to
+    via: subCompanyId
+id_prefixes:
+  subco_: SubCompany

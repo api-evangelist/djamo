@@ -1,0 +1,44 @@
+generated: '2026-07-18'
+method: derived
+status: candidate
+source: https://docs.djamo.com/
+note: >-
+  Djamo publishes no official MCP server. This is a candidate tool list derived
+  from the documented Business API operations, for a potential wrapper.
+server:
+  name: djamo
+  transport: http
+tools:
+  - name: create_charge
+    description: Create a payment collection charge (Pay with Djamo).
+    source_operation: POST /v1/charges
+  - name: get_charge
+    description: Retrieve a charge by id.
+    source_operation: GET /v1/charges/:id
+  - name: refund_charge
+    description: Refund a charge (full or partial).
+    source_operation: POST /v1/charges/:id/refund
+  - name: create_transaction
+    description: Send money to a recipient msisdn.
+    source_operation: POST /v1/transactions
+  - name: create_transaction_batch
+    description: Send money to multiple recipients in a batch.
+    source_operation: POST /v1/transactions/batch
+  - name: get_transaction
+    description: Retrieve a transaction by id or reference.
+    source_operation: GET /v1/transactions/:id
+  - name: check_customer
+    description: Check whether a recipient msisdn is a valid Djamo customer.
+    source_operation: GET /v1/transactions/customers/check
+  - name: get_balance
+    description: Get the real-time business balance.
+    source_operation: GET /v1/balance
+  - name: create_sub_company
+    description: Create a marketplace sub-company.
+    source_operation: POST /v1/sub-companies
+  - name: list_sub_companies
+    description: List sub-companies.
+    source_operation: GET /v1/sub-companies
+  - name: update_sub_company
+    description: Update a sub-company.
+    source_operation: PUT /v1/sub-companies/:id

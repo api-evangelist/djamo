@@ -1,0 +1,59 @@
+generated: '2026-07-18'
+method: searched
+source: https://docs.djamo.com/errors.html
+format: custom
+note: >-
+  Djamo does not use RFC 9457 application/problem+json. Errors use a custom JSON
+  envelope. These HTTP status codes reflect request status only, not transaction
+  outcomes (a settled transaction failure is surfaced via the transaction `status`
+  = failed and `failureReason`).
+envelope:
+  fields:
+    statusCode: HTTP status code (integer)
+    message: array of human-readable error messages
+    error: exception/category name (string)
+    correlationId: opaque request correlation id for support
+    path: request path, e.g. /v1/charges
+    timestamp: ISO 8601 UTC
+  example: |
+    {
+      "statusCode": 400,
+      "message": ["Error message"],
+      "error": "Bad Request Exception",
+      "correlationId": "34f66c14821e8ba0e2d7749406c06081",
+      "path": "/v1/xxx",
+      "timestamp": "2025-10-30T08:35:51.624Z"
+    }
+problems:
+  - status: 400
+    title: Bad Request
+    detail: An error occurred while processing the request.
+    remediation: Review request parameters and body.
+  - status: 401
+    title: Unauthorized
+    detail: The request could not be authenticated. The ACCESS_TOKEN is either missing or is incorrect.
+    remediation: Verify or rotate the access token.
+  - status: 403
+    title: Forbidden
+    detail: The ACCESS_TOKEN is not allowed to access the resource.
+    remediation: Confirm the token/business is authorized for the resource.
+  - status: 404
+    title: Not Found
+    detail: The resource could not be found.
+    remediation: Verify the resource identifier/endpoint.
+  - status: 409
+    title: Conflict
+    detail: A collision happened (e.g. the same reference used twice to create two different transactions).
+    remediation: Use a unique externalId/reference per request (idempotency).
+  - status: 422
+    title: Unprocessable Entity
+    detail: An error occurred during the process. If it persists, contact Djamo.
+    remediation: Retry; if it persists contact business-tech@djamo.com.
+  - status: 429
+    title: Too Many Requests
+    detail: The rate limit was exceeded.
+    remediation: Implement exponential backoff and retry later.
+  - status: 500
+    title: Internal Server Error
+    detail: A server error occurred. If it persists, contact Djamo.
+    remediation: Retry; if it persists contact business-tech@djamo.com.
