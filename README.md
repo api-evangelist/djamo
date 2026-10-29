@@ -64,6 +64,113 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Djamo is a company surfaced as a portfolio company of partech and added to the API Evangelist network as a stub for enrichment. Sector: Financial Services. This profile is a lead awaiting the enrichment pipeline.
+Djamo is a mobile-first fintech serving Côte d'Ivoire and Sénégal, giving 1.5M+ users current and savings accounts with an IBAN, virtual and physical Visa cards, money transfers to Mobile Money and bank accounts, bill payments, short-term credit, and BRVM investment products. For businesses, Djamo exposes a REST Business API that lets companies collect payments ("Pay with Djamo"), send single and mass transfers to recipients by phone number, check their real-time balance, and manage marketplace sub-companies, secured with bearer tokens and HMAC-signed webhooks. Djamo is a Y Combinator alumnus backed by investors including Partech.
 
-Backed by: partech — https://www.djamo.com/
+**Areas:** Company · Financial Services · Fintech · Payments · Banking · Money Transfer · Africa · Côte d'Ivoire · Sénégal
+
+## Djamo on APIs.io
+
+Everything profiled for Djamo is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/djamo/](https://apis.io/providers/djamo/)** — or go straight to one of the APIs or properties below.
+
+### APIs (1)
+
+- [Djamo Business API](https://apis.io/apis/djamo/djamo-business-api/) — REST API for businesses to collect payments, send single and mass transfers, check balance, manage sub-companies, and receive HMAC-signed webhooks.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### AsyncAPI (1)
+
+Event-driven and webhook contracts.
+
+- [Djamo Business API Webhooks](https://apis.io/asyncapis/djamo/djamo-webhooks-asyncapi/)
+
+#### Event channels (4)
+
+Individual events and webhooks the provider emits.
+
+- [charge/events](https://apis.io/channels/djamo/charge-events/)
+- [transactions/completed](https://apis.io/channels/djamo/transactions-completed/)
+- [transactions/failed](https://apis.io/channels/djamo/transactions-failed/)
+- [transactions/started](https://apis.io/channels/djamo/transactions-started/)
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [djamo](https://apis.io/servers/djamo/djamo/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Djamo Authentication](https://apis.io/security/djamo/djamo-authentication/)
+- [Djamo Domain Security](https://apis.io/security/djamo/djamo-domain-security/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.djamo.com/)
+- [Pricing](https://www.djamo.com/fr-ci/tarifs-business)
+- [Sign up](https://go.djamo.com/app)
+- [Support](https://docs.djamo.com/contact.html)
+- [Blog](https://www.djamo.com/fr-ci/apprendre)
+- [Terms of service](https://www.djamo.com/fr-ci/conditions-generales-et-tarifaires)
+- [Privacy policy](https://www.djamo.com/fr-ci/politique-de-confidentialite)
+
+## API Evangelist rating
+
+**Kin Score 41.6** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 42.7 |
+| Contract governance | 4.5 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 66.1 |
+| Access clarity | 44.7 |
+
+**Agent readiness 23.6** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | documented (partial credit) |
+| Error Semantics | documented (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | derived (partial credit) |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | na |
+
+**Regulatory alignment 19.7** — Banking & Open Finance
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/djamo/](https://apis.io/providers/djamo/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Djamo: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/djamo/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
